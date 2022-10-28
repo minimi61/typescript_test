@@ -1,10 +1,10 @@
-interface DataProps {
-    id: number;
-    content: string;
-    title: string;
-    type: string;
-    createdAt: number
-}
+// interface DataProps {
+//     id: number;
+//     content: string;
+//     title: string;
+//     type: string;
+//     createdAt: number
+// }
 
 export const APIDatas = ({ items }: any) => {
     let sliceData = items.content.slice(0, 300)
