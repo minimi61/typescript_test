@@ -1,3 +1,5 @@
+import React from "react";
+
 export const SearchBox = () => {
     return (
         <div className="mt-10 rounded text-xl w-96 border-solid border-2 focus-within:border-indigo-600 focus-within:shadow-lg

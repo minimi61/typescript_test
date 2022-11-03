@@ -5,9 +5,10 @@
 //     type: string;
 //     createdAt: number
 // }
+import React from "react";
 
 export const APIDatas = ({ items }: any) => {
-    let sliceData = items.content.slice(0, 300)
+    const sliceData = items.content.slice(0, 300)
     return (
         <div className="p-5">
             <div className="p-5 cursor-pointer hover:bg-gray-100">

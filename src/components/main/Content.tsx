@@ -1,3 +1,5 @@
+import React from "react";
+
 export const Content = ({ status }: any) => {
     console.log(status === 'a')
     return (
