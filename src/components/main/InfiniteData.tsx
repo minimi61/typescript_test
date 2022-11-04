@@ -19,8 +19,8 @@ export const InfiniteData = () => {
     const token = process.env.REACT_APP_TOKEN_KEY;
     const [data, setData] = useState<DataProps[] | undefined>([]);
     const [page, setPage] = useState<number>(0);
-    console.log('타입', data && data)
-    const typeStatus = data && data[0].type
+    // console.log('타입', data && data[0].type)
+    // const typeStatus = data && data[0].type
 
     const [bottom, setBottom] = useState<HTMLDivElement | null>(null);
 
@@ -30,8 +30,7 @@ export const InfiniteData = () => {
         .get(`${baseURL}/${token}/a-posts?page=${page}`)
         .then(function (response) {
             console.log(response.data)
-            // data?.push(response.data)
-        setData(data?.concat(response.data))
+            setData(data && data.concat(response.data))
     })
     const onIntersect = (entries:IntersectionObserverEntry[], observer:IntersectionObserver) => {
         entries.forEach((entry) => {
@@ -54,9 +53,10 @@ export const InfiniteData = () => {
     },[bottom])
     return (
         <div className="grid place-items-center">
-            <Content status={typeStatus} />
+            {/* <Content status={typeStatus} /> */}
+            <Content />
             <div className="mt-1 mb-3 py-6 w-1/2   border-2 border-gray rounded-lg ">
-                {data?.map((item: any, index: number): any => {
+                {data && data.map((item: any, index: number): any => {
                     return (
                         <div key={index}>
                             <APIDatas items={item} />
