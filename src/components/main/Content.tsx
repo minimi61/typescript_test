@@ -1,7 +1,7 @@
 import React from "react";
 
-export const Content = ({ status }: any) => {
-    console.log(status === 'a')
+export const Content = ( {status} : any) => {
+    console.log('content',status)
     return (
         <>
             <div className="mt-10 py-6 flex w-1/2 text-xl  border-b-2 border-gray  mb-3">
