@@ -6,10 +6,12 @@
 //     createdAt: number
 // }
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 export const APIDatas = ({ items }: any) => {
+    const navigate = useNavigate()
     const detailClick = () => {
-        console.log('ㄴㄴㄴ')
+        navigate(`/detail/${items.id}`)
     }
     const sliceData = items.content.slice(0, 300)
     return (
