@@ -1,1 +1,4 @@
-//typscript + tailwind
+** typscript + tailwind **
+
+
+- npm install react-router-dom --save

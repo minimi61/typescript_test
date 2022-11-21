@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.17",
+    "@tanstack/react-query": "^4.16.1",
+    "@tanstack/react-query-devtools": "^4.16.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -17,6 +19,7 @@
     "postcss": "^7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "^4.4.2",
