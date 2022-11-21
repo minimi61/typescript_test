@@ -1,13 +1,13 @@
-// interface DataProps {
-//     id: number;
-//     content: string;
-//     title: string;
-//     type: string;
-//     createdAt: number
-// }
+interface DataProps {
+    id: number;
+    content: string;
+    title: string;
+    type: string;
+    createdAt: number
+}
 import React from "react";
 
-export const APIDatas = ({ items }: any) => {
+export const APIDatas = ({ items }: {items:DataProps}) => {
     const sliceData = items.content.slice(0, 300)
     return (
         <div className="p-5">

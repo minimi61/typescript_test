@@ -17,14 +17,13 @@ export type DataType = string;
 export const InfiniteData = () => {
     const baseURL = process.env.REACT_APP_API_KEY;
     const token = process.env.REACT_APP_TOKEN_KEY;
-    const [data, setData] = useState<DataProps[] | undefined>([]);
+    const [data, setData] = useState<DataProps[]  >([]);
     const [page, setPage] = useState<number>(0);
-    // console.log('타입', data && data[0].type)
-    // const typeStatus = data && data[0].type
+
+    // console.log('타입',data && data[0]?.type )
+    const typeStatus = data && data[0]?.type
 
     const [bottom, setBottom] = useState<HTMLDivElement | null>(null);
-
-    //const bottonObserver = useRef(null);
     
     const axiosMethod = async () => await axios
         .get(`${baseURL}/${token}/a-posts?page=${page}`)
@@ -50,13 +49,13 @@ export const InfiniteData = () => {
           observer = new IntersectionObserver(onIntersect, { threshold: 0.5 });
           observer.observe(bottom);
         }
-    },[bottom])
+    }, [bottom])
+    
     return (
         <div className="grid place-items-center">
-            {/* <Content status={typeStatus} /> */}
-            <Content />
+            <Content status={typeStatus} />
             <div className="mt-1 mb-3 py-6 w-1/2   border-2 border-gray rounded-lg ">
-                {data && data.map((item: any, index: number): any => {
+                {data && data.map((item: DataProps, index: number) => {
                     return (
                         <div key={index}>
                             <APIDatas items={item} />
