@@ -1,5 +1,5 @@
 import React from "react";
-import { DataProps } from "./InfiniteData";
+import { DataProps } from "../../api/type";
 
 export const Content = ({ status, setChangeType, setPage, setData }: {
     status: string, setChangeType: React.Dispatch<React.SetStateAction<string>>, setPage: React.Dispatch<React.SetStateAction<number>>, setData: React.Dispatch<React.SetStateAction<DataProps[]>>

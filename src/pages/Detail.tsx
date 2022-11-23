@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const Detail = () => {
   const navigate = useNavigate()
   const goToBack = () => {
-    navigate('/')
+    navigate(-1)
   }
   return (
     <div>

@@ -1,12 +1,6 @@
-interface DataProps {
-    id: number;
-    content: string;
-    title: string;
-    type: string;
-    createdAt: number
-}
 import React from "react";
 import { useNavigate } from 'react-router-dom';
+import { DataProps } from "../../api/type";
 
 export const APIDatas = ({ items }: {items:DataProps}) => {
     const navigate = useNavigate()
