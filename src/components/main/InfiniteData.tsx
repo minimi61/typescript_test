@@ -13,11 +13,10 @@ export type DataType = string;
 
 export const InfiniteData = () => {
 
-    const [getData, setgetData] = useState<DataProps[]>([]);
+    // const [getData, setgetData] = useState<DataProps[]>([]);
     // const [page, setPage] = useState<number>(0);
-    // const typeStatus = getData && getData[0]?.type
-    // console.log(getData && getData)
     const [changeType, setChangeType] = useState<string>('a')
+    console.log('changeType',changeType)
     const observerRef = useRef<IntersectionObserver>();
     const boxRef = useRef<HTMLLIElement>(null);
     const fetchDatas = async ({ pageParam = 0 }) => {
@@ -33,8 +32,9 @@ export const InfiniteData = () => {
        { return allPages.length}
           }
     )
+    const typeStatus = data?.pages[0]?.[0]?.type
 
-    if (isSuccess) console.log('성공')
+    // if (isSuccess) console.log('성공')
 
     
     const onIntersect: IntersectionObserverCallback = ([entry], io: IntersectionObserver) => {
@@ -44,7 +44,12 @@ export const InfiniteData = () => {
                 fetchNextPage();
             }
         }
-      };
+    };
+    useEffect(() => {
+        if (changeType) {
+            fetchDatas
+        }
+    },[changeType])
     useEffect(() => {
         if (observerRef.current) {
             observerRef.current.disconnect();
@@ -58,9 +63,7 @@ export const InfiniteData = () => {
 
     return (
         <div className="grid place-items-center">
-            {/* <Content status={typeStatus} setChangeType={setChangeType}
-                setPage={setPage}
-                setData={setgetData} /> */}
+            <Content status={typeStatus} setChangeType={setChangeType} />
             <div className="mt-1 mb-3 py-6 w-1/2   border-2 border-gray rounded-lg ">
                 {data && data?.pages.map((items) => 
                     items.map((item: DataProps, index:number) => {
@@ -72,10 +75,6 @@ export const InfiniteData = () => {
                         )
                     })
                   )}
-
-
-                
-            
             </div >
         </div>
     )
