@@ -1,14 +1,14 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { instance } from "./axios";
 import { DataPropsArray } from "./type";
+import { useInfiniteQuery } from '@tanstack/react-query';
 
-export const getList = async(
+export const getList = async (
   type: string,
-  page: number ,
+  page: number,
   searchValue: string
 ) => {
-  const { data }: DataPropsArray = await instance.get(`/${type}-posts?page=${page}&search=${searchValue}`)
-  return data
+  // const { data }: DataPropsArray = await instance.get(`/${type}-posts?page=${page}&search=${searchValue}`)
+  // return data
 }
 
 export const useGetList = (type: string, searchValue: string) => {
