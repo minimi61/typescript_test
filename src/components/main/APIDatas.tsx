@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { DataProps } from "../../api/type";
 
 export const APIDatas = ({ items }: { items: DataProps }) => {
-    console.log()
     const navigate = useNavigate()
     const detailClick = () => {
         navigate(`/detail/${items?.id}`)

@@ -1,41 +1,19 @@
 import React from "react";
-import { useEffect, useState, useRef,useMemo } from "react";
 import { APIDatas } from './APIDatas';
 import { Content } from "./Content";
-import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import useObserver from "../../hooks/useObserver";
-import { instance } from "../../api/axios";
 import { DataProps } from './../../api/type';
-
+import { queryData } from "../../api/axios";
 
 export type DataType = string;
 
 
+
+
 export const InfiniteData = () => {
 
-    // const [getData, setgetData] = useState<DataProps[]>([]);
-    // const [page, setPage] = useState<number>(0);
-    const [changeType, setChangeType] = useState<string>('a')
-    console.log('changeType',changeType)
-    const observerRef = useRef<IntersectionObserver>();
-    const boxRef = useRef<HTMLLIElement>(null);
-    const fetchDatas = async ({ pageParam = 0 }) => {
-        const res = await instance.get(`/${changeType}-posts?page=${pageParam}`)
-        return res.data
-    }
-
-
-    const { isSuccess, data, fetchNextPage,hasNextPage } = useInfiniteQuery({
-        queryKey: ['projects'],
-        queryFn: fetchDatas,
-        getNextPageParam: (lastPage, allPages) => 
-       { return allPages.length}
-          }
-    )
+    const { isSuccess, data, fetchNextPage, hasNextPage, setChangeType } = queryData();
     const typeStatus = data?.pages[0]?.[0]?.type
-
-    // if (isSuccess) console.log('성공')
-
     
     const onIntersect: IntersectionObserverCallback = ([entry], io: IntersectionObserver) => {
         if (entry.isIntersecting) {
@@ -45,18 +23,7 @@ export const InfiniteData = () => {
             }
         }
     };
-    useEffect(() => {
-        if (changeType) {
-            fetchDatas
-        }
-    },[changeType])
-    useEffect(() => {
-        if (observerRef.current) {
-            observerRef.current.disconnect();
-        }
-        observerRef.current = new IntersectionObserver(onIntersect);
-        boxRef.current && observerRef.current.observe(boxRef.current);
-    }, [data, onIntersect]);
+
     
     const { setTarget } = useObserver({ onIntersect });
     
@@ -88,20 +55,7 @@ export const InfiniteData = () => {
             
     //         setgetData(getData && getData.concat(response.data))
     //     })
-    //React-Query
-    // const { isLoading, error, data } = useQuery(['repoData'], () =>
-    //     fetch(`${baseURL}/${token}/${changeType}-posts?page=${page}`).then(res =>
-    //         res.json()
-    //     )
-    // )
-    // if (isLoading) console.log('isLoaging')
-    // if(error) console.log('error')
     
-    // const getDataToAxios = () => {
-    //     const res = useInfiniteQuery(
-    //         ['infiniteData'],({pageParam=0})=> axios.get(`${baseURL}/${token}/${changeType}-posts?page=${page}`)
-    //     )
-    // }
     // const onIntersect = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
     //     entries.forEach((entry) => {
     //         if (entry.isIntersecting) {

@@ -1,12 +1,17 @@
 import React from 'react'
 import PageCommon from '../components/PageCommon'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
+import { useQuery } from "@tanstack/react-query";
+import { detailQueryData } from '../api/axios';
 
 const Detail = () => {
   const navigate = useNavigate()
+  const param = useParams();
+  console.log(param)
   const goToBack = () => {
     navigate(-1)
   }
+  // const {data} = detailQueryData()
   return (
     <div>
       <PageCommon />
