@@ -9,3 +9,7 @@ export interface DataProps {
 export interface DataPropsArray {
   data: DataProps[]
 }
+
+export interface paramItem {
+  id: string
+}
