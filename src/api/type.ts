@@ -9,3 +9,4 @@ export interface DataProps {
 export interface DataPropsArray {
   data: DataProps[]
 }
+

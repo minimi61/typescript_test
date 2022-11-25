@@ -27,21 +27,19 @@ export const queryData = () => {
   return {isSuccess, data, fetchNextPage, hasNextPage, setChangeType}
 }
 
-export const detailQueryData = () => {
-  const [changeType, setChangeType] = useState<string>('a')
+export const detailQueryData = (id?:number ) => {
+  const [detailChangeType, setdetailChangeType] = useState<string>('a')
 
   const fetchDatas = async () => {
-    console.log('함수 들어옴 changeType', changeType)
-    const res = await instance.get(`/${changeType}-posts/1`)
+    console.log('함수 들어옴 changeType', detailChangeType)
+    const res = await instance.get(`/${detailChangeType}-posts/${id}`)
     return res.data
   }
 
-  const { isSuccess, data } = useInfiniteQuery({
+  const { isSuccess, data } = useQuery({
     queryKey: ['detail'],
     queryFn: fetchDatas,
-    // getNextPageParam: (lastPage, allPages) => { return allPages.length }
-  }
-  )
+  })
 
-  return {isSuccess, data, setChangeType}
+  return {isSuccess, data, setdetailChangeType, detailChangeType}
 }

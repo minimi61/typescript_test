@@ -1,15 +1,17 @@
-import React from "react";
-import { DataProps } from "../../api/type";
+import React,{useEffect} from "react";
 
 export const Content = ({ status, setChangeType }: {
     status: string, setChangeType: React.Dispatch<React.SetStateAction<string>>
 }) => {
+
     const moveToA = () => {
         setChangeType('a')
     }
     const moveToB = () => {
         setChangeType('b')
+
     }
+
     console.log('실제로 받는 값', status)
     return (
         <>

@@ -3,7 +3,7 @@ import { APIDatas } from './APIDatas';
 import { Content } from "./Content";
 import useObserver from "../../hooks/useObserver";
 import { DataProps } from './../../api/type';
-import { queryData } from "../../api/axios";
+import { queryData,detailQueryData } from "../../api/axios";
 
 export type DataType = string;
 
@@ -11,7 +11,8 @@ export type DataType = string;
 
 
 export const InfiniteData = () => {
-
+    const { detailChangeType, setdetailChangeType } =  detailQueryData()
+    console.log(detailChangeType)
     const { isSuccess, data, fetchNextPage, hasNextPage, setChangeType } = queryData();
     const typeStatus = data?.pages[0]?.[0]?.type
     
