@@ -1,7 +1,6 @@
 import React from 'react'
 import PageCommon from '../components/PageCommon'
-import { useNavigate,useParams } from 'react-router-dom'
-import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams } from 'react-router-dom'
 import { detailQueryData } from '../api/axios';
 
 const Detail = () => {
