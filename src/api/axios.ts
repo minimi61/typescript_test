@@ -29,7 +29,7 @@ export const queryData = () => {
   return { isSuccess, data, fetchNextPage, hasNextPage, setChangeType }
 }
 
-export const detailQueryData = (id?:number ) => {
+export const detailQueryData = (id?: number) => {
   const [detailChangeType, setdetailChangeType] = useState<string>('a')
 
   const fetchDatas = async () => {
@@ -43,5 +43,5 @@ export const detailQueryData = (id?:number ) => {
     queryFn: fetchDatas,
   })
 
-  return {isSuccess, data, setdetailChangeType, detailChangeType}
+  return { isSuccess, data, setdetailChangeType, detailChangeType }
 }
