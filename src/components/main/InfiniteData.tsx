@@ -13,9 +13,9 @@ export type DataType = string;
 export const InfiniteData = () => {
     const { detailChangeType, setdetailChangeType } =  detailQueryData()
 
-    const { isSuccess, data, fetchNextPage, hasNextPage, setChangeType } = queryData();
+    const { isSuccess, data, fetchNextPage, hasNextPage, setListType, setText, listType, text } = queryData();
     const typeStatus = data?.pages[0]?.[0]?.type
-    
+    console.log(data)
     const onIntersect: IntersectionObserverCallback = ([entry], io: IntersectionObserver) => {
         if (entry.isIntersecting) {
             io.unobserve(entry.target);
@@ -27,11 +27,10 @@ export const InfiniteData = () => {
 
     
     const { setTarget } = useObserver({ onIntersect });
-    
 
     return (
         <div className="grid place-items-center">
-            <Content status={typeStatus} setChangeType={setChangeType} />
+            <Content status={listType} setListType={setListType} />
             <div className="mt-1 mb-3 py-6 w-1/2   border-2 border-gray rounded-lg ">
                 {data && data?.pages.map((items) => 
                     items.map((item: DataProps, index:number) => {

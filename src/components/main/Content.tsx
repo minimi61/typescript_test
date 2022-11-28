@@ -1,14 +1,14 @@
-import React,{useEffect} from "react";
+import React from "react";
 
-export const Content = ({ status, setChangeType }: {
-    status: string, setChangeType: React.Dispatch<React.SetStateAction<string>>
+export const Content = ({ status, setListType }: {
+    status: string, setListType: React.Dispatch<React.SetStateAction<string>>
 }) => {
 
     const moveToA = () => {
-        setChangeType('a')
+        setListType('a')
     }
     const moveToB = () => {
-        setChangeType('b')
+        setListType('b')
 
     }
 
