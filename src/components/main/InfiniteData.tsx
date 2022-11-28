@@ -12,7 +12,7 @@ export type DataType = string;
 
 export const InfiniteData = () => {
     const { detailChangeType, setdetailChangeType } =  detailQueryData()
-    console.log(detailChangeType)
+
     const { isSuccess, data, fetchNextPage, hasNextPage, setChangeType } = queryData();
     const typeStatus = data?.pages[0]?.[0]?.type
     

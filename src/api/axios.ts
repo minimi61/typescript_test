@@ -2,7 +2,7 @@ import axios from "axios";
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { DataPropsArray } from "./type";
-import { paramItem } from "./type";
+// import { paramItem } from "./type";
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_KEY
