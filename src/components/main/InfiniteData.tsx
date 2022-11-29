@@ -13,9 +13,9 @@ export type DataType = string;
 export const InfiniteData = () => {
     const { detailChangeType, setdetailChangeType } =  detailQueryData()
 
-    const { isSuccess, data, fetchNextPage, hasNextPage, setListType, setText, listType, text } = queryData();
-    const typeStatus = data?.pages[0]?.[0]?.type
-    console.log(data)
+    const { isSuccess, data, fetchNextPage, hasNextPage,changeType,setChangeType } = queryData();
+    // const typeStatus = data?.pages[0]?.[0]?.type
+    console.log('데이터뿌려주는 곳에서',changeType)
     const onIntersect: IntersectionObserverCallback = ([entry], io: IntersectionObserver) => {
         if (entry.isIntersecting) {
             io.unobserve(entry.target);
@@ -30,7 +30,7 @@ export const InfiniteData = () => {
 
     return (
         <div className="grid place-items-center">
-            <Content status={listType} setListType={setListType} />
+            <Content status={changeType} setListType={setChangeType} />
             <div className="mt-1 mb-3 py-6 w-1/2   border-2 border-gray rounded-lg ">
                 {data && data?.pages.map((items) => 
                     items.map((item: DataProps, index:number) => {
