@@ -11,11 +11,11 @@ export type DataType = string;
 
 
 export const InfiniteData = () => {
-    const { detailChangeType, setdetailChangeType } =  detailQueryData()
+    // const { detailChangeType, setdetailChangeType } =  detailQueryData()
 
-    const { isSuccess, data, fetchNextPage, hasNextPage,changeType,setChangeType } = queryData();
+    const { isSuccess, data, fetchNextPage, hasNextPage,changeType,setChangeType,text, setText } = queryData();
     // const typeStatus = data?.pages[0]?.[0]?.type
-    console.log('데이터뿌려주는 곳에서',changeType)
+    console.log('데이터뿌려주는 곳에서',data&&data)
     const onIntersect: IntersectionObserverCallback = ([entry], io: IntersectionObserver) => {
         if (entry.isIntersecting) {
             io.unobserve(entry.target);

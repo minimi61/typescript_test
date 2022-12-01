@@ -7,7 +7,6 @@ export const APIDatas = ({ items }: { items: DataProps }) => {
     const detailClick = () => {
         navigate(`/detail/${items?.id}`)
     }
-
     const sliceData = items.content.slice(0, 300)
     return (
         <div className="p-5" >

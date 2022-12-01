@@ -5,14 +5,12 @@ import { detailQueryData, queryData } from '../api/axios';
 
 const Detail = () => {
   const navigate = useNavigate()
-  // const { listType, text } = queryData()
-  // console.log(listType, text)
+  const { changeType } = queryData()
   const param = useParams();
   if (!param) {
     throw new Error('No Params')
   }
-
-  console.log(typeof param.id)
+  console.log(changeType)
   const goToBack = () => {
     navigate(-1)
   }

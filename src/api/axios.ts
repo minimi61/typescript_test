@@ -11,23 +11,25 @@ export const instance = axios.create({
 
 const fetchDatas = async (
   listType: string,
-  page: number
+  page: number,
+  text: string
 ) => {
-  const res = await instance.get(`/${listType}-posts?page=${page}`)
-  return res.data
+  const {data} = await instance.get(`/${listType}-posts?page=${page}&search=${text}`)
+  return data
 }
 export const queryData = () => {
   const queryClient = useQueryClient()
   queryClient.invalidateQueries({ queryKey: ['projects'] })
   const [changeType, setChangeType] = useState<string>('a')
-
+  const [text, setText] = useState<string>('')
 
   const { isSuccess, data, fetchNextPage, hasNextPage,status } = useInfiniteQuery(
-    ['projects',changeType],
+    ['projects',changeType,text],
     async ({ pageParam = 0 }) => {
       return await fetchDatas(
         changeType,
-        pageParam === null ? 0 : pageParam
+        pageParam === null ? 0 : pageParam,
+        text
       )
     },
     {
@@ -35,7 +37,7 @@ export const queryData = () => {
   }
   )
 
-  return { isSuccess, data, fetchNextPage, hasNextPage,changeType,setChangeType}
+  return { isSuccess, data, fetchNextPage, hasNextPage,changeType,setChangeType,text, setText}
 }
 
 
@@ -50,7 +52,7 @@ export const detailQueryData = (id?: number) => {
   }
 
   const { isSuccess, data } = useQuery({
-    queryKey: ['detail'],
+    queryKey: ['detail',detailChangeType],
     queryFn: fetchDatas,
   })
 
