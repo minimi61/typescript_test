@@ -41,12 +41,17 @@ const Main = () => {
         <article className="mb-2 border-b-[1px]">
           <TypeToggle />
         </article>
-        <article  className="rounded-md border-[1px] p-4 shadow-inner mb-4">
-          <PostList />
+        <article className="rounded-md border-[1px] p-4 shadow-inner mb-4">
+          <PostList
+            text={text}
+            list={List}
+            listType={listType}
+            boxRef={boxRef}
+          />
         </article>
       </main>
     </section>
   )
 }
-  
+
 export default Main
