@@ -5,6 +5,7 @@ var react_2 = require("react");
 var Search_1 = require("../manage/components/Search");
 var TypeToggle_1 = require("../manage/components/TypeToggle");
 var PostList_1 = require("../manage/components/PostList");
+var useList_1 = require("../manage/api/useList");
 //내가 한거
 // const Main = () => {
 //   useEffect(() => {
@@ -22,6 +23,7 @@ var PostList_1 = require("../manage/components/PostList");
 //   )
 // }
 var Main = function () {
+    var _a = useList_1.useList(), List = _a.List, boxRef = _a.boxRef, text = _a.text, setText = _a.setText, listType = _a.listType, setListType = _a.setListType;
     react_2.useEffect(function () {
         sessionStorage.setItem('text', '');
         sessionStorage.setItem('type', 'a');

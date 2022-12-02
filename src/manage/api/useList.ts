@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
+import { useGetList } from "./useGetList"
+import useInput from "./useInput"
 
 export const useList = () => {
     const typeStorage = sessionStorage.getItem("type")
@@ -10,6 +12,36 @@ export const useList = () => {
         textStorage === null ? "" : String(sessionStorage.getItem("text"))
     );
 
+    const query = useInput(text);
+    const { data: List,
+        fetchNextPage,
+        hasNextPage
+    } = useGetList(listType, query)
 
-    return
-}
+    const boxRef = useRef<HTMLElement>(null);
+    const observerRef = useRef<IntersectionObserver>();
+
+    const intersectionObserver = useCallback(
+        (entries: IntersectionObserverEntry[], io: IntersectionObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              io.unobserve(entry.target);
+              if (hasNextPage) {
+                fetchNextPage();
+              }
+            }
+          });
+        },
+        [fetchNextPage, hasNextPage]
+    );
+    
+    useEffect(() => {
+        if (observerRef.current) {
+          observerRef.current.disconnect();
+        }
+        observerRef.current = new IntersectionObserver(intersectionObserver);
+        boxRef.current && observerRef.current.observe(boxRef.current);
+      }, [List, intersectionObserver]);
+
+      return { List, boxRef, text, setText, listType, setListType };
+    }

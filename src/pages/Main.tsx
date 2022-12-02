@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import Search from '../manage/components/Search';
 import { TypeToggle } from '../manage/components/TypeToggle';
 import PostList from '../manage/components/PostList';
-
+import { useList } from '../manage/api/useList';
 //내가 한거
 // const Main = () => {
 //   useEffect(() => {
@@ -26,6 +26,7 @@ import PostList from '../manage/components/PostList';
 // }
 
 const Main = () => {
+  const { List, boxRef, text, setText, listType, setListType } = useList();
   useEffect(() => {
     sessionStorage.setItem('text', '');
     sessionStorage.setItem('type', 'a');
@@ -41,7 +42,7 @@ const Main = () => {
           <TypeToggle />
         </article>
         <article  className="rounded-md border-[1px] p-4 shadow-inner mb-4">
-          <PostList/>
+          <PostList />
         </article>
       </main>
     </section>
