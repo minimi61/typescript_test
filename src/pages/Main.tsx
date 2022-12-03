@@ -36,10 +36,10 @@ const Main = () => {
       <header className='mt-32 text-xl text-gray-600'>게시물 검색해보세요</header>
       <main>
         <article className="my-10 flex w-full justify-center">
-          <Search />
+          <Search text={text} setText={setText} />
         </article>
         <article className="mb-2 border-b-[1px]">
-          <TypeToggle />
+          <TypeToggle  listType={listType} setListType={setListType}/>
         </article>
         <article className="rounded-md border-[1px] p-4 shadow-inner mb-4">
           <PostList

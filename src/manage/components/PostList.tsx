@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { DataProps } from '../../api/type';
-import { InfiniteData } from 'react-query'
+import { InfiniteData } from '@tanstack/react-query'
 
 interface props {
   list: InfiniteData<DataProps[]> | undefined;

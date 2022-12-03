@@ -8,9 +8,12 @@ function App() {
   return (
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path="/detail/:id" element={<Detail />} />
-      </Routes>
-  );
+        {/* <Route path="/detail/:id" element={<Detail />} /> */}
+        <Route path="/:id" element={<Detail />} />
+
+    </Routes>
+
+);
 }
 
 export default App;

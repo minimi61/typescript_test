@@ -32,10 +32,10 @@ var Main = function () {
         react_1["default"].createElement("header", { className: 'mt-32 text-xl text-gray-600' }, "\uAC8C\uC2DC\uBB3C \uAC80\uC0C9\uD574\uBCF4\uC138\uC694"),
         react_1["default"].createElement("main", null,
             react_1["default"].createElement("article", { className: "my-10 flex w-full justify-center" },
-                react_1["default"].createElement(Search_1["default"], null)),
+                react_1["default"].createElement(Search_1["default"], { text: text, setText: setText })),
             react_1["default"].createElement("article", { className: "mb-2 border-b-[1px]" },
-                react_1["default"].createElement(TypeToggle_1.TypeToggle, null)),
+                react_1["default"].createElement(TypeToggle_1.TypeToggle, { listType: listType, setListType: setListType })),
             react_1["default"].createElement("article", { className: "rounded-md border-[1px] p-4 shadow-inner mb-4" },
-                react_1["default"].createElement(PostList_1["default"], null)))));
+                react_1["default"].createElement(PostList_1["default"], { text: text, list: List, listType: listType, boxRef: boxRef })))));
 };
 exports["default"] = Main;

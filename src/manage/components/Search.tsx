@@ -1,11 +1,11 @@
-import React, {useRef} from 'react';
+import React, {useRef,Dispatch,SetStateAction} from 'react';
 
 interface props {
   text: string;
-  // setText: Dispa
+  setText:  Dispatch<SetStateAction<string>>
 }
 
-const Search = () => {
+const Search = ({ text, setText }: props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const onClickInput = () => {
     inputRef.current?.focus()
@@ -18,6 +18,8 @@ const Search = () => {
       <input
         autoFocus
         ref={inputRef}
+        onChange={(e) => setText(e.target.value)}
+        value={text}
         type='text'
         placeholder='검색어를 입력하세요'
         className='w-[80%] outline-none'

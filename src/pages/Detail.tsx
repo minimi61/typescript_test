@@ -2,19 +2,25 @@ import React from 'react'
 import PageCommon from '../components/PageCommon'
 import { useNavigate, useParams } from 'react-router-dom'
 import { detailQueryData, queryData } from '../api/axios';
+import { usePath } from '../hooks/usePath';
+import useGetDetail from '../manage/api/useGetDetail'
 
 const Detail = () => {
   const navigate = useNavigate()
-  const { changeType } = queryData()
-  const param = useParams();
-  if (!param) {
-    throw new Error('No Params')
-  }
-  console.log(changeType)
+  // const { changeType } = queryData()
+  // const param = useParams();
+  // if (!param) {
+  //   throw new Error('No Params')
+  // }
+  // console.log(changeType)
+  
+  //매니저님
+  const { type, id } = usePath();
+  const { data } = useGetDetail(type, id);
   const goToBack = () => {
     navigate(-1)
   }
-  const  {data}  = detailQueryData(param?.id as unknown as number)
+  // const  {data}  = detailQueryData(param?.id as unknown as number)
   return (
     <div>
       <PageCommon />
